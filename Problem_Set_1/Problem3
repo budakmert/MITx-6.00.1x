@@ -16,8 +16,26 @@
 
 
 # Paste your code into this box
-count=0
-for i in range(0,len(s)):
-    if s[i:i+3] == 'bob':
-        count += 1
-print("Number of times bob occurs is:" + str(count))
+p = ''
+longest2= ''
+longest= ''
+if len(s) == 1:
+    p += s[0]
+    longest = p
+else: 
+    for i in range(len(s)-1):
+        if s[i] <= s[i+1]:
+            p += s[i:i+1]
+            if i+1 == len(s)-1:
+                p += s[i+1]
+                if len(longest)<len(p):
+                    longest = p
+                    if len(s) == 1:
+                        p += s[0]
+                        longest = p
+        elif s[i] > s[i+1]:
+            p += s[i:i+1] + ''
+            if len(longest)<len(p):
+                longest = p
+            p = ''
+print("Longest substring in alphabetical order is: " + longest)
